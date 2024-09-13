@@ -19,7 +19,7 @@ pipeline {
             steps {
                 script {
                     // Use Docker container with Unix-style paths
-                    docker.image('protractor-image').inside('-w \app') {
+                    docker.image('protractor-image').inside('app') {
                         sh 'npm test' // Use 'sh' for Unix commands
                     }
                 }

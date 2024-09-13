@@ -10,21 +10,23 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build('protractor-image', '.')
+                    // Build the Docker image
+                    docker.build('protractor-image')
                 }
             }
         }
         stage('Run Tests') {
             steps {
                 script {
-                    docker.image('protractor-image').inside('-w /app') {
-                      //  bat 'protractor protractor/conf.js' // Use 'bat' for Windows commands
+                    // Use Docker container with Unix-style paths
+                    docker.image('protractor-image').inside('-w \app') {
+                        sh 'npm test' // Use 'sh' for Unix commands
                     }
                 }
             }
         }
     }
-
+    
     post {
         always {
             cleanWs()

@@ -1,0 +1,16 @@
+{
+ "userName":"Nandhini",
+ "SuperAdd":{
+    "fisrtInput": 20,
+    "SecondInput": 30
+ },
+ "SuperAdd1":{
+    "fisrtInput": 10,
+    "SecondInput": 100
+ },
+ "SuperAdd3":{
+    "fisrtInput": 200,
+    "SecondInput": 300
+ }
+
+}

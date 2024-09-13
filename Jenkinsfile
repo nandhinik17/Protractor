@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     docker.image('protractor-image').inside('-w /app') {
-                        bat 'npm test' // Use 'bat' for Windows commands
+                        bat 'protractor protractor/conf.js' // Use 'bat' for Windows commands
                     }
                 }
             }

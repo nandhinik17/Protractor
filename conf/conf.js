@@ -66,8 +66,7 @@ exports.config = {
  },
 
   framework: 'jasmine',
-  specs: ['../user-interactions-examples/checkbox-enabled-or-not.spec.js',
-    '../user-interactions-examples/clear-the-text.spec.js',
+  specs: ['../user-interactions-examples/clear-the-text.spec.js',
     '../user-interactions-examples/dropdown-handling.spec.js'
   ],
   jasmineNodeOpts: {

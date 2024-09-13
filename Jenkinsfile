@@ -4,20 +4,25 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/nandhinik17/Protractor/' // Assuming 'main' is the branch containing your project code
+                git branch: 'main', url: 'https://github.com/nandhinik17/Protractor' // Ensure the URL is correct and accessible
             }
         }
         stage('Build Image') {
             steps {
-                sh 'docker build -t protractor-test-image .' // Build the image from the Dockerfile in the workspace
+                script {
+                    // Ensure Docker is available and you have permission to build images
+                    sh 'docker build -t protractor-test-image .' // Build the image from the Dockerfile in the workspace
+                }
             }
         }
         stage('Run Tests') {
             steps {
                 script {
-                    docker.image('protractor-test-image').inside() { // No need to specify "app" as the Dockerfile sets the working directory
+                    // Ensure the image name matches the one used in the Build Image stage
+                    docker.image('protractor-test-image').inside() {
+                        // Install dependencies and run tests inside the Docker container
                         sh 'npm install'
-                        sh 'npm test' // Run your tests
+                        sh 'npm test'
                     }
                 }
             }
@@ -26,6 +31,7 @@ pipeline {
 
     post {
         always {
+            // Clean workspace to ensure no leftover files affect future builds
             cleanWs()
         }
     }

@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/nandhinik17/Protractor/' // Assuming 'master' is the branch containing your project code
+                git branch: 'main', url: 'https://github.com/nandhinik17/Protractor/' // Assuming 'main' is the branch containing your project code
             }
         }
         stage('Build Image') {

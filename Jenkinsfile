@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     // Ensure Docker is available and you have permission to build images
-                    sh 'docker build -t protractor-test-image .' // Build the image from the Dockerfile in the workspace
+                    bat 'docker build -t protractor-test-image .' // Build the image from the Dockerfile in the workspace
                 }
             }
         }
@@ -21,8 +21,8 @@ pipeline {
                     // Ensure the image name matches the one used in the Build Image stage
                     docker.image('protractor-test-image').inside() {
                         // Install dependencies and run tests inside the Docker container
-                        sh 'npm install'
-                        sh 'npm test'
+                        bat 'npm install'
+                        bat 'npm test'
                     }
                 }
             }

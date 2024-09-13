@@ -66,8 +66,7 @@ exports.config = {
  },
 
   framework: 'jasmine',
-  specs: ['../user-interactions-examples/dynamic-xpath-example.spec.js'],
-    
+ specs: ['../user-interactions-examples/dynamic-xpath-example.spec.js'],
   jasmineNodeOpts: {
     defaultTimeoutInterval: 300000
   },

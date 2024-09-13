@@ -17,8 +17,8 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    docker.image('protractor-image').inside {
-                        sh 'protractor conf/protractor.conf.js'
+                    docker.image('protractor-image').inside('-w /app') {
+                        bat 'npm test' // Use 'bat' for Windows commands
                     }
                 }
             }

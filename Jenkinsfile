@@ -10,7 +10,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    docker.image('selenium/standalone-chrome:latest').inside('app') {
+                    docker.image('protractor-test-image').inside('app') {
                         bat 'npm install'
                         bat 'npm test' // Run your tests
                     }

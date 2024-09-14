@@ -22,10 +22,10 @@ pipeline {
             steps {
                 script {
                     // Run Protractor tests inside Docker container
-                    docker.image('protractor-image').inside {
+                   // docker.image('protractor-image').inside {
                         // Use bat for Windows commands
                         bat 'protractor conf/conf.js'
-                    }
+                   // }
                 }
             }
         }

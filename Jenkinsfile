@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout code from Git repository
-                git url: 'https://github.com/nandhinik17/Protractor'
+                git branch: 'main', url: 'https://github.com/nandhinik17/Protractor'
             }
         }
 

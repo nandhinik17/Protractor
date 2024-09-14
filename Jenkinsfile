@@ -17,6 +17,7 @@ pipeline {
                     bat 'protractor --version'
                     bat 'node -v'
                     bat 'npm -v'
+                    bat 'protractor conf/conf.js'
                 }
             }
         }

@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image from Dockerfile
-                    docker.build('protractor-selenium')  // Tag the image with 'protractor-image'
+                    docker.build('selenium/standalone-chrome:latest')  // Tag the image with 'protractor-image'
                 }
             }
         }
@@ -22,9 +22,9 @@ pipeline {
             steps {
                 script {
                    // Run Protractor tests inside Docker container
-                   docker.image('protractor-selenium').inside {
+                   docker.image('selenium/standalone-chrome:latest').inside {
                         // Use bat for Windows commands
-                        sh 'protractor conf/conf.js'
+                        bat 'protractor conf/conf.js'
                     }
                 }
             }
@@ -34,7 +34,7 @@ pipeline {
     post {
         always {
             // Clean up Docker images after the   build
-            sh 'docker system prune -f'
+            bat 'docker system prune -f'
         }
     }
 }

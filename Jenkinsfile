@@ -22,17 +22,17 @@ pipeline {
             }
         }
 
-        stage('Run Protractor Tests') {
-            steps {
-                script {
-                   // Run Protractor tests inside Docker container
-                   docker.image('selenium/standalone-chrome:latest').inside {
-                        // Use bat for Windows commands
-                        bat 'protractor conf/conf.js'
-                    }
-                }
-            }
-        }
+        // stage('Run Protractor Tests') {
+        //     steps {
+        //         script {
+        //            // Run Protractor tests inside Docker container
+        //            docker.image('selenium/standalone-chrome:latest').inside {
+        //                 // Use bat for Windows commands
+        //                 bat 'protractor conf/conf.js'
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     post {

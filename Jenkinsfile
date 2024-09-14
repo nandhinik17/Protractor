@@ -1,38 +1,35 @@
 pipeline {
     agent any
-
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/nandhinik17/Protractor' // Ensure the URL is correct and accessible
+                // Checkout code from Git
+                git 'https://github.com/nandhinik17/Protractor.git'
             }
         }
-        stage('Build Image') {
+        stage('Build Docker Image') {
             steps {
                 script {
-                    // Ensure Docker is available and you have permission to build images
-                    bat 'docker build -t protractor-test-image .' // Build the image from the Dockerfile in the workspace
+                    // Build Docker image
+                    docker.build('protractor-image')
                 }
             }
         }
-        stage('Run Tests') {
+        stage('Run Protractor Tests') {
             steps {
                 script {
-                    // Ensure the image name matches the one used in the Build Image stage
-                    docker.image('protractor-test-image').inside() {
-                        // Install dependencies and run tests inside the Docker container
-                        bat 'npm install'
-                        bat 'npm test'
+                    // Run Docker container and execute Protractor tests
+                    docker.image('protractor-image').inside {
+                        sh 'protractor conf/conf.js'
                     }
                 }
             }
         }
     }
-
     post {
         always {
-            // Clean workspace to ensure no leftover files affect future builds
-            cleanWs()
+            // Clean up Docker images after the build
+            sh 'docker system prune -f'
         }
     }
 }

@@ -23,7 +23,8 @@ pipeline {
                 script {
                     // Run Protractor tests inside Docker container
                     docker.image('protractor-image').inside {
-                        sh 'protractor conf/conf.js'  // Run the Protractor command inside the Docker container
+                        // Use bat for Windows commands
+                        bat 'protractor conf/conf.js'
                     }
                 }
             }
@@ -33,7 +34,7 @@ pipeline {
     post {
         always {
             // Clean up Docker images after the build
-            sh 'docker system prune -f'
+            bat 'docker system prune -f'
         }
     }
 }

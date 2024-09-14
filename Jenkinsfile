@@ -14,6 +14,7 @@ pipeline {
                 script {
                     // Build Docker image from Dockerfile
                     docker.build('selenium/standalone-chrome:latest')  // Tag the image with 'protractor-image'
+                    bat docker run --help
                 }
             }
         }

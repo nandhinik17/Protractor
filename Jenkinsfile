@@ -1,12 +1,14 @@
 pipeline {
     agent any
+
     stages {
         stage('Checkout') {
             steps {
                 // Checkout code from Git
-                git 'https://github.com/nandhinik17/Protractor'
+                git url: 'https://github.com/nandhinik17/Protractor'
             }
         }
+        
         stage('Build Docker Image') {
             steps {
                 script {
@@ -15,10 +17,11 @@ pipeline {
                 }
             }
         }
+        
         stage('Run Protractor Tests') {
             steps {
                 script {
-                    // Run Docker container and execute Protractor tests
+                    // Run Protractor tests inside Docker container
                     docker.image('protractor-image').inside {
                         sh 'protractor conf/conf.js'
                     }
@@ -26,6 +29,7 @@ pipeline {
             }
         }
     }
+    
     post {
         always {
             // Clean up Docker images after the build

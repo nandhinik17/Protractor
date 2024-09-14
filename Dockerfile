@@ -1,7 +1,7 @@
 FROM node:18
 
 RUN npm install -g protractor
-
+RUN npm install -g webdriver-manager
 
 RUN webdriver-manager update
 

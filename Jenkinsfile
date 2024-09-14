@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image from Dockerfile
-                    docker.build('protractor-image')  // Tag the image with 'protractor-image'
+                    docker.build('protractor-test-image ')  // Tag the image with 'protractor-image'
                 }
             }
         }
@@ -21,11 +21,11 @@ pipeline {
         stage('Run Protractor Tests') {
             steps {
                 script {
-                    // Run Protractor tests inside Docker container
-                   // docker.image('protractor-image').inside {
+                   // Run Protractor tests inside Docker container
+                   docker.image('protractor-test-image ').inside {
                         // Use bat for Windows commands
                         bat 'protractor conf/conf.js'
-                   // }
+                    }
                 }
             }
         }

@@ -3,10 +3,10 @@ FROM node:18-slim
 
 # Install Protractor and Selenium WebDriver
 RUN npm install -g protractor
-RUN npm install -g webdriver-manager --f
+RUN npm install -g webdriver-manager
 
 # Set up Protractor
-RUN webdriver-manager update --f
+RUN webdriver-manager update
 
 # Set the working directory
 WORKDIR /app
@@ -20,7 +20,7 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Expose the port the app runs on (not needed in this case but good practice)
+# Expose the port the app runs on (not needed for Protractor but good practice)
 EXPOSE 4444
 
 # Run Protractor tests

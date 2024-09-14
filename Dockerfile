@@ -15,6 +15,5 @@ COPY . .
 
 EXPOSE 4444
 
-RUN protractor conf/conf.js
 
-CMD ["protractor", "conf/conf.js"]
+CMD ["protractor", "conf.js"]

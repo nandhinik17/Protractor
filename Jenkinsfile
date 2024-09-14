@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout code from Git
+                // Checkout code from Git repository
                 git url: 'https://github.com/nandhinik17/Protractor'
             }
         }
@@ -12,7 +12,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Build Docker image
+                    // Build Docker image from Dockerfile
                     docker.build('protractor-image')
                 }
             }

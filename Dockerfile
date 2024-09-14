@@ -1,5 +1,5 @@
 # Use the official Node.js image
-FROM node:18-slim
+FROM node:18
 
 # Install Protractor and Selenium WebDriver
 RUN npm install -g protractor

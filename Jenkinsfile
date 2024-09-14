@@ -4,7 +4,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout code from Git
-                git 'https://github.com/nandhinik17/Protractor.git'
+                git 'https://github.com/nandhinik17/Protractor'
             }
         }
         stage('Build Docker Image') {

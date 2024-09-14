@@ -33,7 +33,7 @@ pipeline {
 
     post {
         always {
-            // Clean up Docker images after the build
+            // Clean up Docker images after  build
             bat 'docker system prune -f'
         }
     }
